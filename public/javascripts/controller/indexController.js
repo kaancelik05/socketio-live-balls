@@ -7,7 +7,7 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
         const username = prompt('Please enter username');
 
         if (username)
-            initSocket(username);
+            initSocket(username); 
         else
             return false;
     };
@@ -29,10 +29,10 @@ app.controller('indexController', ['$scope', 'indexFactory', ($scope, indexFacto
     function initSocket(username) {
         const connectionOptions = {
             reconnectionAttempts: 3,
-            reconnectionDelay: 600
+            reconnectionDelay: 500
         };
 
-        indexFactory.connectSocket('http://localhost:3000', connectionOptions)
+        indexFactory.connectSocket('https://live-chat-with-balls.herokuapp.com/', connectionOptions)
             .then((socket) => {
                 socket.emit('newUser', { username });
 
